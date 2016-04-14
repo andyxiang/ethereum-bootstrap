@@ -2,6 +2,8 @@
 
 通过本文所述方法和项目中的脚本，我们可以快速的搭建好自己的私链进行开发测试。
 
+如有疑问可以加群：325411816 共同讨论！
+
 仓库中包含的工具有：
 
 * 一个测试账户导入脚本，在首次部署时将五个测试账户私钥导入以太坊节点。
@@ -21,14 +23,20 @@
 
 1. 进入本仓库目录: `cd ethereum-bootstrap`
 2. 导入测试账户私钥: `./bin/import_keys.sh`
+   `输入密码`
 3. 启动私有链节点: `./bin/private_blockchain.sh`. 启动成功后可以看到类似如下输出:
   ![private-started.png](screenshots/private-started.png)
+  `按回车后会提示输入解锁账户密码`
+   解锁成功后输入
+  `miner.start(1)` 开始挖矿。
 4. 此时以太坊交互式控制台已经启动，我们可以开始测试和开发了。
 
 注意：工具脚本假设你的geth安装在默认位置, 可以直接通过`geth`执行。如果`geth`命令安装在非标准的位置，可以设置`GETH`环境变量指定geth可执行文件的路径。例如:
 
 `GETH=/some/weird/dir/geth ./bin/import_keys.sh`
 
+## 使用[Truffle](https://github.com/ConsenSys/truffle)可以简化编译部署合约
+    [Truffle](https://github.com/ConsenSys/truffle)
 ## 使用以太坊控制台编译和部署智能合约
 
 在`contracts`目录下有一个智能合约样例文件`Token.sol`, 通过Solidity语言实现了基本的代币功能, 合约持有者可以发行代币, 使用者可以互相转账.
@@ -138,6 +146,3 @@ I1221 11:53:31.852541   11155 xeth.go:1055] Tx(0x1d209cef921dea5592d8604ac0da680
 ## 其他
 
 私有链的所有数据都会放在仓库根目录下的`data`目录中，删除这个目录可以清除所有数据，重新启动新环境。
-
-获取关于以太坊的更多信息请访问[EthFans](http://ethfans.org).
-
